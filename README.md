@@ -23,13 +23,22 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
 
 <h2>High-Level Steps</h2>
 
-- Step 1
-- Step 2
-- Step 3
-- Step 4
+- Create Resources in Azure (Resource Group, Windows Virtual Machine, and Linux Virtual Machine)
+- Observe ICMP Traffic
+- Observe SSH Traffic
+- Observe DHCP Traffic
+- Observe DNS Traffic
+- Observe RDP Traffic
 
 <h2>Actions and Observations</h2>
 
+<h3 align="center">
+  Setting up your virtual environment
+</h3>
+</br>
+<p>
+  Log into your Azure account and create a Resource Group: 
+</p>
 <p>
 <img src="https://i.imgur.com/DJmEXEB.png" height="80%" width="80%" alt="Disk Sanitization Steps"/>
 </p>
