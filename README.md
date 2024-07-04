@@ -84,74 +84,75 @@ In this tutorial, we observe various network traffic to and from Azure Virtual M
   <p>
     <h4>Ping a public website</h4>
     From The Windows 10 VM, open command line or PowerShell and attempt to ping a public website (such as www.google.com) and observe the traffic in WireShark
-    <!<img src="???" height="75%" width="100%" alt="ICMP traffic - public address"/>
+    <img src="https://i.imgur.com/o4kM7O2.png" height="75%" width="100%" alt="ICMP traffic - public address"/>
   </p>
   <p>
     <h4>Initiating, disabling, and re-enabling a perpetual ping between VMs using NSG</h4>
-    Initiate a perpetual/non-stop ping from Windows 10 VM to Ubuntu VM
-    <!<img src="???" height="75%" width="100%" alt="ICMP traffic - perpetual ping"/>
+    Initiate a perpetual/non-stop ping from Windows 10 VM to Ubuntu VM by typing "ping [Ubuntu VM private IP address] -t" in Windows Powershell inside of the Windows 10 VM 
+    <img src="https://i.imgur.com/aoMQCbx.png" height="75%" width="100%" alt="ICMP traffic - perpetual ping"/>
     <br/>
-    Open the NSG in the Ubuntu VM and disable incoming (inbound) ICMP traffic
-    <!<img src="???" height="75%" width="100%" alt="NSG - inbound denial"/>
+    Disable inbound ICMP ping requests to Ubuntu VM. Navigate to Ubuntu VM's NSG. Click "Inbound security rules", then click "Add", then select "ICMPv4", then select "Deny", then change priority by inputting a number in correspondence to its priority, and then click "Add".
+    <img src="https://i.imgur.com/OGp5taJ.png" height="75%" width="100%" alt="NSG - inbound denial"/>
     <br/>
     Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity
-    <!<img src="???" height="75%" width="100%" alt="ICMP traffic - inbound denial"/>
+    <img src="https://i.imgur.com/EMvLlCh.png" height="75%" width="100%" alt="ICMP traffic - inbound denial"/>
     <br/>
-    Re-enable ICMP traffic for the NSG in the Ubuntu VM
-    <!<img src="???" height="75%" width="100%" alt="NSG - inbound allow"/>
+    Re-enable ICMP traffic to Ubuntu VM by either deleting previously created rule in NSG or changing the rule to "Allow" instead of "Deny"
+    <img src="https://i.imgur.com/DhjZYdT.png" height="75%" width="100%" alt="NSG - inbound allow"/>
     <br/>
     Back in the Windows 10 VM, observe the ICMP traffic in WireShark and the command line Ping activity (should start working again)
-    <!<img src="???" height="75%" width="100%" alt="ICMP traffic - re-enabled"/>
+    <img src="https://i.imgur.com/eliCNQv.png" height="75%" width="100%" alt="ICMP traffic - re-enabled"/>
     <br/>
-    Stop the ping activity
-    <!<img src="???" height="75%" width="100%" alt="ICMP traffic - stop"/>
+    Stop the ping activity by pressing CTRL + C
+    <img src="https://i.imgur.com/HsOGobc.png" height="75%" width="100%" alt="ICMP traffic - stop"/>
   </p>  
 </p>
 <br/>
 <p>
   <h3 align="center">Observing SSH Traffic</h3>
   <h4>Filter for SSH traffic only in Wireshark</h4>
-  <!<img src="???" height="75%" width="100%" alt="Filter for SSH"/>
+  <img src="https://i.imgur.com/a5cjdB5.png" height="75%" width="100%" alt="Filter for SSH"/>
   <h4>"SSH into" the Ubuntu VM (via its private address)</h4>
-  <!<img src="???" height="75%" width="100%" alt="???"/>
+  Open Powershell in Windows 10 VM and type "ssh [Ubuntu VM's username]@[Ubuntu VM's private IP address]" and then input password
+  <img src="https://i.imgur.com/G5Cxbo2.png" height="75%" width="100%" alt="SSH into Ubuntu VM"/>
   Type commands (username, pwd, etc) into the linux SSH connection and observe SSH traffic spam in WireShark
-  <!<img src="???" height="75%" width="100%" alt="SSH Traffic"/>
+  <img src="https://i.imgur.com/hPGiOwm.png" height="75%" width="100%" alt="SSH Traffic"/>
   <br/>
   Exit the SSH connection by typing ‘exit’ and pressing [Enter]
-  <!<img src="???" height="75%" width="100%" alt="SSH traffic - exit"/>
+  <img src="https://i.imgur.com/M17FgPN.png" height="75%" width="100%" alt="SSH traffic - exit"/>
 </p>
 <br/>
 <p>
   <h3 align="center">Observing DHCP Traffic</h3>
   Back in Wireshark, filter for DHCP traffic only
-  <!<img src="???" height="75%" width="100%" alt="Filter for DHCP"/>
+  <img src="https://i.imgur.com/vsiseJt.png" height="75%" width="100%" alt="Filter for DHCP"/>
   <br/>
-  From your Windows 10 VM, attempt to issue your VM a new IP address from the command line (ipconfig /renew)(***Note***Observe the DHCP traffic appearing in WireShark)
-  <!<img src="???" height="75%" width="100%" alt="DHCP Traffic - new"/>
+  From your Windows 10 VM, attempt to issue your VM a new IP address from the command line (type "ipconfig /renew" in Powershell)(***Note***Observe the DHCP traffic appearing in WireShark)
+  <img src="https://i.imgur.com/FrVsuFx.png" height="75%" width="100%" alt="DHCP Traffic - new"/>
 </p>
 <br/>
 <p>
   <h3 align="center">Observing DNS Traffic</h3>
-  Back in Wireshark, filter for DNS traffic only
-  <!<img src="???" height="75%" width="100%" alt="Filter for DNS"/>
+  Back in Wireshark, filter for DNS traffic only by typing "DNS" or "udp.port==53"
+  <img src="https://i.imgur.com/ePQS90f.png" height="75%" width="100%" alt="Filter for DNS"/>
   <br/>
   From your Windows 10 VM within a command line, use nslookup to see what google.com and disney.com’s IP addresses are (***Note***Observe the DNS traffic being shown in WireShark)
-  <!<img src="???" height="75%" width="100%" alt="DNS Traffic"/>
+  <img src="https://i.imgur.com/lXtN6JB.png" height="75%" width="100%" alt="DNS Traffic"/>
 </p>
 <br/>
 <p>
   <h3 align="center">Observing RDP Traffic</h3>
-  Back in Wireshark, filter for RDP traffic only (tcp.port == 3389)
-  <!<img src="???" height="75%" width="100%" alt="Filter for RDP"/>
+  Back in Wireshark, filter for RDP traffic only by typing "RDP" or "tcp.port == 3389"
+  <img src="https://i.imgur.com/Ufb2tWH.png" height="75%" width="100%" alt="Filter for RDP"/>
   <br/>
   Oserve the immediate non-stop spam of traffic? Why is it non-stop spamming vs only showing traffic when a command is inputted?
   <br/>
   Answer: Because the RDP (protocol) is constantly showing you a live stream from one computer to another, therefor traffic is always being transmitted
-  <!<img src="???" height="75%" width="100%" alt="Filter for RDP"/>  
+  <img src="https://i.imgur.com/8G6TZ9x.png" height="75%" width="100%" alt="Filter for RDP"/>  
 </p>
 <br/>
 <p>
-  Thank you for checking out my turotial! I hope you learned a little bit about NSGs and network traffic protocols between virtual machines. Have a wonderful day. 
+  <h3 align="center">Thank you for checking out my tutorial! I hope you learned a little bit about network traffic protocols between virtual machines and creating VMs & NSGs in Azure. Thank you once again for stopping by and have a wonderful day.</h3> 
 </p>
 
 
