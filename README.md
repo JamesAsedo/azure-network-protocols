@@ -1,4 +1,4 @@
-# azure-network-protocols
+# Exploring-Azure-and-Networking-Concepts
 
 <p align="center">
 <img src="https://i.imgur.com/Ua7udoS.png" alt="Traffic Examination"/>
